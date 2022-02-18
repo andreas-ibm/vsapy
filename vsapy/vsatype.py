@@ -90,7 +90,7 @@ class VsaBase(np.ndarray):
 
     @classmethod
     def get_converter(cls, vsa_type):
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "get_converter()"')
 
     @classmethod
     def validate_operand(cls, b):
@@ -126,7 +126,7 @@ class VsaBase(np.ndarray):
         :param vsa_type: type of VSA subclass to create from VsaType class.
         :return: a matrix of vectors of shape 'dims'.
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "randvec()"')
 
     @classmethod
     def normalize(cls, sv, seqlength=None, rv=None):
@@ -137,7 +137,7 @@ class VsaBase(np.ndarray):
         :param rv: Optional random vector, used for splitting ties on binary and ternary vectors.
         :return: new VSA vector
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "normalize()"')
 
     @classmethod
     def bind(cls, a, b):
@@ -149,7 +149,7 @@ class VsaBase(np.ndarray):
                  In most cases bind(a, b) is analogues to multiplication, e.g. bind(3,4)=>12.
                  If we know one of the operands we can recover the other using unbind(a,b) e.g unbind(3,12)=>4
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "bind()"')
 
     @classmethod
     def unbind(cls, a, b):
@@ -160,7 +160,7 @@ class VsaBase(np.ndarray):
         :return: reverses a bind operation. If z = bind(x, y) then x = unbind(y, z) and y = unbind(x, z).
                  The return is orthogonal to x nd y if x and y have not been previously associated with bind(x, y).
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "unbind()"')
 
     @classmethod
     def hdist(cls, a, b):
@@ -169,7 +169,7 @@ class VsaBase(np.ndarray):
         :param b: vsa vector
         :return: normalized hamming distance between a and b. 0.0=exact match.
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "hdist()"')
 
     @classmethod
     def hsim(cls, a, b):
@@ -178,7 +178,7 @@ class VsaBase(np.ndarray):
         :param b: vsa vector
         :return: normalized hamming similarity between a and b. 1.0=exact match.
         """
-        raise NotImplementedError('Subclass must implment "validate_operand()"')
+        raise NotImplementedError('Subclass must implment "hsim()"')
 
 
     @classmethod
